@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RileyFilm - Movie Info</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            overflow: hidden;   /* 넘치는 부분을 숨기기 위해 overflow 속성 사용 */
+        }
+        .container img {
+            max-height: 300px;
+            width: auto;   /* 이미지의 세로 비율을 유지하기 위해 자동으로 조정 */
+            object-fit: cover;
+        }
+        .section {
+            width: 48%;
+            padding: 15px;
+            margin-bottom: 5px;
+            text-align: left;
+            background-color: #f2f2f2;
+        }
+        .section img {
+            max-width: 75px;
+            height: auto;   /* 이미지의 세로 비율을 유지하기 위해 자동으로 조정 */
+        }
+    </style>
+</head>
+<body>
+    <br>
+    {% if movie_info %}
+    <!--{% for category in movie_info %}
+        {{category}}<br><br>
+    {% endfor %}-->
+    <div class="container">
+        <img src="{{'https://image.tmdb.org/t/p/original' + movie_info[16]}}">
+    </div>
+    <div class="container">
+        <div class="section"><h3>{{movie_info[1] + ' (' + movie_info[2][:4] + ')'}} {{movie_info[7]}}</h3></div>
+        <div class="section">
+        {% if rec1 %}
+        줄거리 기반 추천 :<br>
+        {% for _, p_path in rec1 %}
+            <!-- p_path 가 null 인 경우 처리해줘야 함 -->
+            <img src="{{'https://image.tmdb.org/t/p/w92' + p_path}}" alt="이미지">
+        {% endfor %}
+        {% endif %}
+        </div>
+        <div class="section">
+        {% if rec2 %}
+        출연진, 연출진 기반 추천 :<br>
+        {% for _, p_path in rec2 %}
+            <!-- p_path 가 null 인 경우 처리해줘야 함 -->
+            <img src="{{'https://image.tmdb.org/t/p/w92' + p_path}}" alt="이미지">
+        {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>

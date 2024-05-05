@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RileyFilm - HomePage</title>
+</head>
+<body>
+    <br>
+    <center>
+        <h2><p>&#127916; RileyFilm - 영화 추천 프로그램 &#127916;</p></h2>
+        <hr style="border: solid 3px red;">
+        <br>
+        <form action="/show_movie_info", method="GET">
+            <strong>영화 제목 : </strong>
+            <input type="text" name="input_title" placeholder="제목 입력" size="25"/>
+            <input type="submit" value="Go!"><br>
+        </form>
+        <br>
+        <form>
+            <a href="{{url_for('RileyFilm.top100')}}">Top 100 영화 리스트 보기</a>
+        </form>
+        <br>
+        <hr style="border: solid 3px red;">
+    </center>
+</body>
+</html>
